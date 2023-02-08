@@ -1,0 +1,93 @@
+:root {
+    --c1: #333;
+    --c2: #767676;
+    --b1: #fff;
+    --b2: #f2f2f2;
+    --s1: #6054ba;
+    --s2: #d8b162;
+
+    @media (prefers-color-scheme: dark) {
+        --c1: #ddd;
+        --b1: #000;
+        --b2: #121212;
+    }
+}
+
+body {
+    font-size: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif;
+    color: var(--c1);
+    background: var(--b1);
+}
+
+a {
+    color: var(--c2);
+    text-decoration: none;
+
+    &:hover,
+    &:hover * {
+        color: var(--s1) !important;
+    }
+}
+
+::selection {
+    color: white;
+    background: var(--s1);
+}
+
+body,
+p,
+ul,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+div[class^='i-'] {
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+button,
+input,
+a.btn {
+    outline: none;
+    border: none;
+    background: transparent;
+    font-size: 0.85rem;
+    color: var(--c1);
+    display: inline-block;
+    margin: 0;
+    padding: 0.35rem 0.6rem;
+    border-radius: 0.25rem;
+    border: 1.5px solid var(--b2);
+
+    &:hover {
+        color: var(--s1);
+        background: var(--b2);
+    }
+}
+
+button {
+    cursor: pointer;
+}
+
+input {
+    &:hover {
+        color: var(--c1);
+    }
+
+    &:focus {
+        background: var(--b2);
+    }
+}
