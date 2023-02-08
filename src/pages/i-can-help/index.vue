@@ -1,9 +1,10 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
 import { useClipboard } from '@vueuse/core'
+import { useRouter } from 'vue-router'
 
 const { isSupported, copy } = useClipboard()
-
+const router = useRouter()
 const query = ref('')
 const url = computed(() => `${location.origin}/i-can-help/${encodeURIComponent(query.value)}`)
 
@@ -27,7 +28,7 @@ function copyUrl() {
 function preview() {
     if (!checkQuery())
         return
-    window.open(url.value, '_self')
+    router.push({ path: `/i-can-help/${query.value}` })
 }
 </script>
 
@@ -39,7 +40,9 @@ function preview() {
         <div class="btns">
             <button v-if="isSupported" @click="copyUrl">拷贝链接</button>
             <button @click="preview">浏览</button>
-            <a class="btn" href="/">首页</a>
+            <RouterLink class="btn" to="/">
+                首页
+            </RouterLink>
         </div>
     </div>
 </template>

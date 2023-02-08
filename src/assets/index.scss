@@ -34,7 +34,7 @@ a {
     color: white;
     background: var(--s1);
 }
-
+// ---------------------------
 body,
 p,
 ul,
@@ -48,16 +48,17 @@ h6 {
     padding: 0;
     margin: 0;
 }
-
+// ---------------------------
+ol,
 ul {
     list-style: none;
 }
-
+// ---------------------------
 div[class^='i-'] {
     display: inline-block;
     vertical-align: bottom;
 }
-
+// ---------------------------
 button,
 input,
 a.btn {
@@ -89,5 +90,25 @@ input {
 
     &:focus {
         background: var(--b2);
+    }
+}
+// ---------------------------
+
+.grid {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+
+    @media (min-width: 640px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    @media (min-width: 1024px) {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    @media (min-width: 1280px) {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
     }
 }

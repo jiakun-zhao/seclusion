@@ -58,7 +58,9 @@ const generate = async () => {
             <button @click="toggle">切换</button>
             <button @click="generate">生成</button>
             <button @click="clearHistory">清除历史</button>
-            <a class="btn" href="/">首页</a>
+            <RouterLink class="btn" to="/">
+                首页
+            </RouterLink>
         </div>
         <div class="history">
             <div v-for="(i, idx) of history" :key="idx">
