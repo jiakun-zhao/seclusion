@@ -8,12 +8,12 @@ const info: Record<string, { title: string; description: string; icon: string }>
         icon: 'i-ph:magnifying-glass-duotone',
     },
     'ticket': {
-        title: 'Ticket Number.',
+        title: 'Ticket Number',
         description: '迅速生成一组彩票数字。',
         icon: 'i-ph:ticket-duotone',
     },
     'guo': {
-        title: '室内设计作品集.',
+        title: '室内设计作品集',
         description: '一个室内设计朋友的作品集。',
         icon: 'i-ph:image-duotone',
     },
