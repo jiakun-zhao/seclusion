@@ -16,7 +16,7 @@ try {
     imgs.value = raw.map(i => i.images[0].src)
 }
 function getUrl(id: number) {
-    return isCollection.value ? `${`${location.origin}/guo?id=${id}`}` : 'javascript:void(0);'
+    return isCollection.value ? `/guo?id=${id}` : 'javascript:void(0);'
 }
 </script>
 
