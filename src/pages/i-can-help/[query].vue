@@ -18,16 +18,16 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="baidu-query" :style="{ height: `${height}px`, width: `${width}px` }">
-        <div v-show="[3, 7, 8, 12, 13].includes(frame)" class="f">
-            <img :src="baiduLogo" alt="baidu-logo" />
-            <div>
-                <span class="input">{{ frame > 7 ? query : '' }}</span>
-                <span class="btn" :class="{ red: frame === 13 }">百度一下</span>
+    <div class="bg-white" :style="{ height: `${height}px`, width: `${width}px` }">
+        <div v-show="[3, 7, 8, 12, 13].includes(frame)" class="flex flex-col h-inherit items-center w-inherit">
+            <img class="mt-16vh w-56" :src="baiduLogo" alt="baidu-logo" />
+            <div class="bg-#556dea border-#556dea border-2 border-solid flex flex-shrink-0 h-10 items-center line-height-2.5rem max-w-98vw mt-8 overflow-hidden rounded-10px w-500px">
+                <span class="bg-white block flex-1 h-full px-0.85rem text-black text-ellipsis text-nowrap">{{ frame > 7 ? query : '' }}</span>
+                <span class="[&.red]-bg-red [&.red]-border-l-2 border-#556dea border-solid mr-[-4px] px-4 text-white" :class="{ red: frame === 13 }">百度一下</span>
             </div>
-            <p>本站与百度公司没有任何联系，Baidu以及本站出现的百度公司Logo是百度公司的商标。复刻自IWO.IM。</p>
+            <p class="mt-auto p-8 text-0.75rem text-c2">本站与百度公司没有任何联系，Baidu以及本站出现的百度公司Logo是百度公司的商标。复刻自IWO.IM。</p>
         </div>
-        <div class="text" :style="font">
+        <div class="[&>p]-py-4 flex flex-col font-bold h-[90%] items-center justify-center text-black w-inherit" :style="font">
             <p v-show="frame >= 0 && frame <= 2">首先</p>
             <p v-show="frame >= 1 && frame <= 2">打开</p>
             <p v-show="frame >= 2 && frame <= 2">百度</p>
@@ -44,78 +44,3 @@ onMounted(() => {
         </div>
     </div>
 </template>
-
-<style lang="scss">
-.baidu-query {
-    background: white;
-    .text,
-    .f {
-        width: inherit;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .f {
-        height: inherit;
-
-        img {
-            width: 14rem;
-            margin-top: 16vh;
-        }
-
-        div {
-            flex-shrink: 0;
-            width: 500px;
-            max-width: calc(100% - 4rem);
-            display: flex;
-            align-items: center;
-            border: 2px solid #556dea;
-            background: #556dea;
-            height: 2.5rem;
-            line-height: 2.5rem;
-            margin-top: 2rem;
-            overflow: hidden;
-            border-radius: 10px;
-
-            .input {
-                flex: 1;
-                display: block;
-                height: 100%;
-                background: white;
-                padding: 0.85rem;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                overflow: hidden;
-            }
-
-            .btn {
-                padding: 0 1rem;
-                color: white;
-
-                &.red {
-                    background-color: red;
-                    border-left: 2px solid #556dea;
-                }
-            }
-        }
-
-        p {
-            color: var(--c2);
-            padding: 2rem;
-            font-size: 0.75rem;
-            margin-top: auto;
-        }
-    }
-
-    .text {
-        height: calc(100% - 10vh);
-        justify-content: center;
-        font-weight: bolder;
-        p {
-            padding: 1rem 0;
-        }
-    }
-}
-</style>

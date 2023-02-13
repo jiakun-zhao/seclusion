@@ -38,133 +38,98 @@ const generate = async () => {
 </script>
 
 <template>
-    <div class="ticket">
-        <h2>Ticket Number.</h2>
-        <div class="nums" :is52="is52">
-            <div class="box red-box">
-                <span class="red">{{ nums[0] }}</span>
-                <span class="red">{{ nums[1] }}</span>
-                <span class="red">{{ nums[2] }}</span>
-                <span class="red">{{ nums[3] }}</span>
-                <span class="red">{{ nums[4] }}</span>
-                <span :class="{ hide: is52 }">{{ nums[5] }}</span>
-            </div>
-            <div class="blue-box box">
-                <span :class="{ hide: !is52 }">{{ nums[5] }}</span>
-                <span class="blue">{{ nums[6] }}</span>
-            </div>
+    <h2 class="mt-8vh text-center">Ticket Number.</h2>
+    <div class="mt-16vh text-center" :is52="is52">
+        <div class="box red-box">
+            <span class="red">{{ nums[0] }}</span>
+            <span class="red">{{ nums[1] }}</span>
+            <span class="red">{{ nums[2] }}</span>
+            <span class="red">{{ nums[3] }}</span>
+            <span class="red">{{ nums[4] }}</span>
+            <span :class="{ hide: is52 }">{{ nums[5] }}</span>
         </div>
-        <div class="btns">
-            <button @click="toggle">切换</button>
-            <button @click="generate">生成</button>
-            <button @click="clearHistory">清除历史</button>
-            <RouterLink class="btn" to="/">
-                首页
-            </RouterLink>
+        <div class="blue-box box">
+            <span :class="{ hide: !is52 }">{{ nums[5] }}</span>
+            <span class="blue">{{ nums[6] }}</span>
         </div>
-        <div class="history">
-            <div v-for="(i, idx) of history" :key="idx">
-                <span class="red">{{ i.nums[0] }}</span>
-                <span class="red">{{ i.nums[1] }}</span>
-                <span class="red">{{ i.nums[2] }}</span>
-                <span class="red">{{ i.nums[3] }}</span>
-                <span class="red">{{ i.nums[4] }}</span>
-                <span :class="i.is52 ? 'blue' : 'red'">{{ i.nums[5] }}</span>
-                <span class="blue">{{ i.nums[6] }}</span>
-            </div>
+    </div>
+    <div class="[&>*]-mx-1 mt-12vh text-center">
+        <button @click="toggle">切换</button>
+        <button @click="generate">生成</button>
+        <button @click="clearHistory">清除历史</button>
+        <RouterLink class="btn" to="/"> 首页 </RouterLink>
+    </div>
+    <div class="py-12vh text-center">
+        <div v-for="(i, idx) of history" :key="idx" class="history-nums mb-6">
+            <span class="red">{{ i.nums[0] }}</span>
+            <span class="red">{{ i.nums[1] }}</span>
+            <span class="red">{{ i.nums[2] }}</span>
+            <span class="red">{{ i.nums[3] }}</span>
+            <span class="red">{{ i.nums[4] }}</span>
+            <span :class="i.is52 ? 'blue' : 'red'">{{ i.nums[5] }}</span>
+            <span class="blue">{{ i.nums[6] }}</span>
         </div>
     </div>
 </template>
 
-<style lang="scss">
-.ticket {
-    h2 {
-        text-align: center;
-        margin-top: 8vh;
-    }
+<style lang="scss" scoped>
+.box {
+    display: inline-block;
+    padding: 0 0.5rem;
+    border-radius: 0.5rem;
 
-    .nums {
-        text-align: center;
-        margin-top: 16vh;
-
-        .box {
-            display: inline-block;
-            border-radius: 0.5rem;
-            padding: 0 0.5rem;
-
-            span {
-                display: inline-block;
-                color: white;
-                transition: width 0.5s ease-in-out;
-                $size: 3rem;
-                width: $size;
-                height: $size;
-                line-height: $size;
-                text-align: center;
-
-                @media screen and (max-width: 576px) {
-                    $size: calc((100vw - 7rem) / 7);
-                    width: $size;
-                    height: $size;
-                    line-height: $size;
-                }
-
-                &.hide {
-                    width: 0;
-                    opacity: 0;
-                    pointer-events: none;
-                }
-            }
-        }
-
-        .red-box {
-            background: rgba(255, 0, 0, 0.8);
-            margin-right: 1rem;
-        }
-
-        .blue-box {
-            background: rgba(0, 0, 255, 0.6);
-        }
-    }
-
-    .btns {
-        text-align: center;
-        margin-top: 12vh;
-
-        button,
-        a {
-            margin: 0 0.25rem;
-        }
-    }
-
-    .history {
-        padding: 12vh 0;
+    span {
+        display: inline-block;
+        color: white;
+        transition: width 0.5s ease-in-out;
+        $size: 3rem;
+        width: $size;
+        height: $size;
+        line-height: $size;
         text-align: center;
 
-        div {
-            margin-bottom: 1.5rem;
-        }
-
-        span {
-            display: inline-block;
-            margin: 0 0.25rem;
-            border-radius: 50%;
-            font-size: 0.85rem;
-            color: white;
-
-            $size: 2rem;
+        @media screen and (max-width: 576px) {
+            $size: calc((100vw - 7rem) / 7);
             width: $size;
             height: $size;
             line-height: $size;
-
-            &.red {
-                background: rgba(255, 0, 0, 0.8);
-            }
-
-            &.blue {
-                background: rgba(0, 0, 255, 0.6);
-            }
         }
+
+        &.hide {
+            width: 0;
+            opacity: 0;
+            pointer-events: none;
+        }
+    }
+}
+
+.red-box {
+    background: rgba(255, 0, 0, 0.8);
+    margin-right: 1rem;
+}
+
+.blue-box {
+    background: rgba(0, 0, 255, 0.6);
+}
+
+.history-nums span {
+    display: inline-block;
+    margin: 0 0.25rem;
+    border-radius: 50%;
+    font-size: 0.85rem;
+    color: white;
+
+    $size: 2rem;
+    width: $size;
+    height: $size;
+    line-height: $size;
+
+    &.red {
+        background: rgba(255, 0, 0, 0.8);
+    }
+
+    &.blue {
+        background: rgba(0, 0, 255, 0.6);
     }
 }
 </style>
