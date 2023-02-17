@@ -7,11 +7,6 @@ const info: Record<string, { title: string; description: string; icon: string }>
         description: '应付朋友的简单问题。',
         icon: 'i-ph:magnifying-glass-duotone',
     },
-    'video-cover': {
-        title: '视频封面',
-        description: '个人风格的视频封面生成',
-        icon: 'i-ph:video-camera-duotone',
-    },
     'ticket': {
         title: 'Ticket Number',
         description: '迅速生成一组彩票数字。',

@@ -120,3 +120,12 @@ input {
     white-space: nowrap;
     overflow: hidden;
 }
+
+#nprogress {
+    .bar {
+        background: var(--s1) !important;
+    }
+    .spinner {
+        display: none !important;
+    }
+}
